@@ -23,6 +23,18 @@
                     </StackPanel>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="Shranjevanje">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="ALO" Margin="5"/>
+                        <CheckBox Margin="10"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="ALO2" Margin="5"/>
+                        <TextBox Width="100" Margin="5"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

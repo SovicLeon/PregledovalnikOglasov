@@ -86,7 +86,7 @@ namespace PregledovalnikOglasov1
 
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
-            Window settings = new Window();
+            Settings settings = new Settings();
             settings.Show();
         }
     }
