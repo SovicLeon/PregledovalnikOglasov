@@ -83,5 +83,11 @@ namespace PregledovalnikOglasov1
                 MessageBox.Show(listView.SelectedItem.ToString());
             }
         }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            Window settings = new Window();
+            settings.Show();
+        }
     }
 }

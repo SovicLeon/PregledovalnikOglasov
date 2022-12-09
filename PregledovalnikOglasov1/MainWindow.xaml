@@ -49,7 +49,7 @@
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Orodja" >
-                    <MenuItem Header="Nastavitve">
+                    <MenuItem Header="Nastavitve" Name="Settings" Click="Settings_Click">
                         <MenuItem.Icon>
                             <Image Source="/3671915_wrench_icon.png"/>
                         </MenuItem.Icon>
