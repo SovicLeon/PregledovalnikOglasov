@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -54,6 +55,22 @@ namespace PregledovalnikOglasov1
             mainWindow.carItems.Add(carItem);
             //newCarItemAdded?.Invoke(this, mainWindow.carItems.Last());
             this.Close();
+        }
+
+        private void Image_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.png, *.jpg, *.bmp, *.gif)|*.png;*.jpg;*.bmp;*.gif";
+
+            // show the OpenFileDialog and get the result
+            var result = openFileDialog.ShowDialog();
+
+            // if the user selected a file, open it
+            if (result == true)
+            {
+                // set the source of the image to the selected file
+                carImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            }
         }
     }
 }

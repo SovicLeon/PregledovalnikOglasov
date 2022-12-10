@@ -10,13 +10,17 @@
         Title="Adds" Height="450" Width="800"
         ResizeMode="NoResize">
     <Grid HorizontalAlignment="Left" Width="800">
-        <ComboBox x:Name="brandBox" HorizontalAlignment="Left" Margin="288,137,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Source={x:Static properties:Settings.Default}, Path=Brand}" />
-        <TextBox x:Name="yearInput" HorizontalAlignment="Left" Margin="288,176,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="distanceInput" HorizontalAlignment="Left" Margin="288,217,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="fuelBox" HorizontalAlignment="Left" Margin="288,266,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="priceInput" HorizontalAlignment="Left" Margin="288,310,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Image x:Name="carImage" HorizontalAlignment="Left" Height="100" Margin="164,148,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox x:Name="detailsInput" HorizontalAlignment="Left" Margin="288,346,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="addButton" Content="Button" HorizontalAlignment="Left" Margin="288,388,0,0" VerticalAlignment="Top" Click="addButton_Click"/>
+        <StackPanel Orientation="Vertical">
+            <Button MouseDoubleClick="Image_MouseDoubleClick" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100">
+                <Image x:Name="carImage" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
+            </Button>
+            <ComboBox x:Name="brandBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Source={x:Static properties:Settings.Default}, Path=Brand}" />
+            <TextBox x:Name="yearInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="distanceInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="fuelBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="priceInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="detailsInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="addButton" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Click="addButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
