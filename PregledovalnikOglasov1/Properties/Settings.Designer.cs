@@ -25,10 +25,9 @@ namespace PregledovalnikOglasov1.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Brand {
+        public global::System.Collections.Specialized.StringCollection Brand {
             get {
-                return ((string)(this["Brand"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["Brand"]));
             }
             set {
                 this["Brand"] = value;

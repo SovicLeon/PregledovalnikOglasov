@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PregledovalnikOglasov1.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Brand" Type="System.String" Scope="User">
+    <Setting Name="Brand" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

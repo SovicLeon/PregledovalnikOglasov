@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PregledovalnikOglasov1"
+        xmlns:properties="clr-namespace:PregledovalnikOglasov1.Properties"
+        xmlns:System="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Settings" Height="450" Width="800"
         ResizeMode="NoResize">
@@ -11,10 +13,13 @@
         <TabControl>
             <TabItem Header="Znamka">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                    <ListView Width="100" Name="brandView" HorizontalContentAlignment="Center">
-                        
+                    <ListView Width="100" HorizontalContentAlignment="Center" x:Name="brandView" ItemsSource="{Binding Source={x:Static properties:Settings.Default}, Path=Brand}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
                     </ListView>
-                    
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
                         <TextBox Width="100" Name="brandInput" Margin="5"/>
                         <Button Content="Dodaj" Name="addButton" Click="addButton_Click" Margin="5"/>

@@ -22,7 +22,8 @@ namespace PregledovalnikOglasov1
     /// </summary>
     public partial class MainWindow : Window
     {
-        ObservableCollection<CarItem> carItems = new ObservableCollection<CarItem>();
+        public ObservableCollection<CarItem> carItems = new ObservableCollection<CarItem>();
+        //public ObservableList<CarItem> carItems = new ObservableList<CarItem>();
         public MainWindow()
         {
             InitializeComponent();
@@ -46,22 +47,12 @@ namespace PregledovalnikOglasov1
 
         private void Dodaj(object sender, RoutedEventArgs e)
         {
-            string[] brands = {"Audi", "BMW", "Citroen"};
-            string[] fuels = {"bencin", "diesel", "hibridni pogon", "e-pogon pogon"};
-            Random rnd = new Random();
-            string newBrand = brands[rnd.Next(0, 3)];
-            int newYear = rnd.Next(2000, 2022);
-            carItems.Add(new CarItem
+            Adds adds = new Adds();
+            adds.Show();
+            /*adds.newCarItemAdded += (s, item) =>
             {
-                Brand = newBrand,
-                Year = newYear,
-                Distance = rnd.Next(0, 300000),
-                Fuel = fuels[rnd.Next(0, 4)],
-                Price = rnd.Next(1000, 50000),
-                Details = "To je test opisa",
-                ImageSrc = "/" + newBrand + ".jpg",
-                Title = newBrand + newYear
-            });                            
+                carItems.Add(item);
+            };*/
         }
 
         private void Odstrani(object sender, RoutedEventArgs e)

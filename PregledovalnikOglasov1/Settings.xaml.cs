@@ -24,47 +24,38 @@ namespace PregledovalnikOglasov1
         public Settings()
         {
             InitializeComponent();
-            // Properties.Settings.Default.Brand = new StringCollection();
-            for (int i = 0; i < Properties.Settings.Default.Brand.Split(' ').Length; i++)
+            if (Properties.Settings.Default.Brand == null)
             {
-                brandView.Items.Add(Properties.Settings.Default.Brand.Split(' ')[i]);
+                Properties.Settings.Default.Brand = new StringCollection();
             }
-            
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            brandView.Items.Add(brandInput.Text);
-            Properties.Settings.Default.Brand = Properties.Settings.Default.Brand + " " + brandInput.Text;
+            Properties.Settings.Default.Brand.Add(brandInput.Text);
             Properties.Settings.Default.Save();
+            Properties.Settings.Default.Reload();
         }
 
         private void removeButton_Click(object sender, RoutedEventArgs e)
         {
             var num = brandView.SelectedItems.Count;
-            List<String> newBrandList = Properties.Settings.Default.Brand.Split(' ').ToList();
             while (num > 0)
             {
-                newBrandList.RemoveAll(x => x.Equals(brandView.SelectedItem.ToString()));
-                brandView.Items.Remove(brandView.SelectedItem);
+                Properties.Settings.Default.Brand.RemoveAt(brandView.SelectedIndex);
                 num--;
             }
-            Properties.Settings.Default.Brand = string.Join(" ",newBrandList);
             Properties.Settings.Default.Save();
+            Properties.Settings.Default.Reload();
         }
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            if(brandInput.Text != "")
+            if(brandInput.Text != "" && brandView.SelectedIndex >= 0)
             {
-                List<String> newBrandList = Properties.Settings.Default.Brand.Split(' ').ToList();
-                int index = brandView.SelectedIndex;
-                ListViewItem newItem = new ListViewItem();
-                newBrandList[index] = brandInput.Text;
-                newItem.Content = brandInput.Text;
-                brandView.Items[index] = newItem;
-                Properties.Settings.Default.Brand = string.Join(" ", newBrandList);
+                Properties.Settings.Default.Brand[brandView.SelectedIndex] = brandInput.Text;
                 Properties.Settings.Default.Save();
+                Properties.Settings.Default.Reload();
             }
         }
     }
