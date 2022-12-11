@@ -67,7 +67,7 @@ namespace PregledovalnikOglasov1
                 Fuel = (FuelTypes)fuelBox.SelectedItem,
                 Price = int.Parse(priceInput.Text),
                 Details = detailsInput.Text,
-                ImageSrc = carImage.Source.ToString()
+                ImageSrc = carImage.Source == null ? "" : carImage.Source.ToString()
             };
             mainWindow.carItems.Add(carItem);
             //newCarItemAdded?.Invoke(this, mainWindow.carItems.Last());

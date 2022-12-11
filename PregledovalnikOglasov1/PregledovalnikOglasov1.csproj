@@ -58,6 +58,7 @@
     <Compile Include="Adds.xaml.cs">
       <DependentUpon>Adds.xaml</DependentUpon>
     </Compile>
+    <Compile Include="IsNullConverter.cs" />
     <Compile Include="ObservableList.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Settings.xaml.cs">
