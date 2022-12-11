@@ -20,7 +20,7 @@ namespace PregledovalnikOglasov1
     /// Interaction logic for Adds.xaml
     /// </summary>
     /// 
-    enum FuelTypes
+    public enum FuelTypes
     {
         Bencin, Dizel, Hibrid, Elektrika
     }
@@ -28,11 +28,28 @@ namespace PregledovalnikOglasov1
     {
         //MainWindow mainWindow = new MainWindow();
         MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+        int editIndex = 0;
         //public event EventHandler<CarItem> newCarItemAdded;
         public Adds()
         {
             InitializeComponent();
             fuelBox.ItemsSource = Enum.GetValues(typeof(FuelTypes));
+            if (mainWindow.selectedIndex >= 0)
+            {
+                brandBox.SelectedItem = mainWindow.carItems[mainWindow.selectedIndex].Brand;
+                yearInput.Text = mainWindow.carItems[mainWindow.selectedIndex].Year.ToString();
+                distanceInput.Text = mainWindow.carItems[mainWindow.selectedIndex].Distance.ToString();
+                fuelBox.SelectedItem = mainWindow.carItems[mainWindow.selectedIndex].Fuel;
+                priceInput.Text = mainWindow.carItems[mainWindow.selectedIndex].Price.ToString();
+                detailsInput.Text = mainWindow.carItems[mainWindow.selectedIndex].Details;
+                carImage.Source = new BitmapImage(new Uri(mainWindow.carItems[mainWindow.selectedIndex].ImageSrc));
+                addButton.Visibility = Visibility.Collapsed;
+                editIndex = mainWindow.selectedIndex;
+            } else
+            {
+                editButton.Visibility = Visibility.Collapsed;
+            }
+            
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -47,10 +64,10 @@ namespace PregledovalnikOglasov1
                 Brand = brandBox.SelectedItem.ToString(),
                 Year = int.Parse(yearInput.Text),
                 Distance = int.Parse(distanceInput.Text),
-                Fuel = fuelBox.SelectedItem.ToString(),
+                Fuel = (FuelTypes)fuelBox.SelectedItem,
                 Price = int.Parse(priceInput.Text),
-                Details = fuelBox.SelectedItem.ToString(),
-                ImageSrc = "/Citroen.jpg"
+                Details = detailsInput.Text,
+                ImageSrc = carImage.Source.ToString()
             };
             mainWindow.carItems.Add(carItem);
             //newCarItemAdded?.Invoke(this, mainWindow.carItems.Last());
@@ -71,6 +88,22 @@ namespace PregledovalnikOglasov1
                 // set the source of the image to the selected file
                 carImage.Source = new BitmapImage(new Uri(openFileDialog.FileName));
             }
+        }
+
+        private void editButton_Click(object sender, RoutedEventArgs e)
+        {
+            CarItem carItem = new CarItem
+            {
+                Brand = brandBox.SelectedItem.ToString(),
+                Year = int.Parse(yearInput.Text),
+                Distance = int.Parse(distanceInput.Text),
+                Fuel = (FuelTypes)fuelBox.SelectedItem,
+                Price = int.Parse(priceInput.Text),
+                Details = detailsInput.Text,
+                ImageSrc = carImage.Source.ToString()
+            };
+            mainWindow.carItems[editIndex] = carItem;
+            this.Close();
         }
     }
 }

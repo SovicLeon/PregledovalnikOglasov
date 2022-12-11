@@ -51,8 +51,8 @@ namespace PregledovalnikOglasov1
             }
         }
 
-        private string _fuel;
-        public string Fuel
+        private FuelTypes _fuel;
+        public FuelTypes Fuel
         {
             get
             {

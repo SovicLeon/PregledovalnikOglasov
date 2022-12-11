@@ -42,7 +42,7 @@
                             <Image Source="/352303_delete_icon.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem Header="Uredi">
+                    <MenuItem Header="Uredi" Click="Uredi">
                         <MenuItem.Icon>
                             <Image Source="/1564503_add_business_edit_editor_new_icon.png"/>
                         </MenuItem.Icon>
@@ -91,7 +91,7 @@
                     <DataTemplate>
                         <ListViewItem IsEnabled="False">
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="{Binding ImageSrc}" Margin="5" />
+                                <Image Source="{Binding ImageSrc}" Margin="5" Height="150" Width="200"/>
                                 <StackPanel Orientation="Vertical">
                                     <Label VerticalAlignment="Center" Content="{Binding Brand}" FontSize="20" FontWeight="Bold"/>
                                     <StackPanel Orientation="Horizontal">

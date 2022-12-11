@@ -23,20 +23,21 @@ namespace PregledovalnikOglasov1
     public partial class MainWindow : Window
     {
         public ObservableCollection<CarItem> carItems = new ObservableCollection<CarItem>();
+        public int selectedIndex = -1;
         //public ObservableList<CarItem> carItems = new ObservableList<CarItem>();
         public MainWindow()
         {
             InitializeComponent();
-            carItems.Add(new CarItem
+            /*carItems.Add(new CarItem
             {
                 Brand = "Citroen",
                 Year = 2017,
                 Distance = 75000,
-                Fuel = "bencin",
+                Fuel = FuelTypes.Bencin,
                 Price = 20000,
                 Details = "Opis test",
                 ImageSrc = "/Citroen.jpg"
-            });
+            });*/
             listView.ItemsSource = carItems;
         }
 
@@ -48,7 +49,7 @@ namespace PregledovalnikOglasov1
         private void Dodaj(object sender, RoutedEventArgs e)
         {
             Adds adds = new Adds();
-            adds.Show();
+            adds.ShowDialog();
             /*adds.newCarItemAdded += (s, item) =>
             {
                 carItems.Add(item);
@@ -78,7 +79,18 @@ namespace PregledovalnikOglasov1
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             Settings settings = new Settings();
-            settings.Show();
+            settings.ShowDialog();
+        }
+
+        private void Uredi(object sender, RoutedEventArgs e)
+        {
+            if (listView.SelectedItems.Count > 0)
+            {
+                selectedIndex = listView.SelectedIndex;
+                Adds adds = new Adds();
+                adds.ShowDialog();
+                selectedIndex = -1;
+            }
         }
     }
 }

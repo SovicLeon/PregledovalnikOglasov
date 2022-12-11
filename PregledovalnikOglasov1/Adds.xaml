@@ -11,16 +11,35 @@
         ResizeMode="NoResize">
     <Grid HorizontalAlignment="Left" Width="800">
         <StackPanel Orientation="Vertical">
-            <Button MouseDoubleClick="Image_MouseDoubleClick" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100">
+            <Button Margin="5" MouseDoubleClick="Image_MouseDoubleClick" HorizontalAlignment="Left" Height="105" VerticalAlignment="Top" Width="105">
                 <Image x:Name="carImage" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="100"/>
             </Button>
-            <ComboBox x:Name="brandBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Source={x:Static properties:Settings.Default}, Path=Brand}" />
-            <TextBox x:Name="yearInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="distanceInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <ComboBox x:Name="fuelBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="priceInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="detailsInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Znamka"/>
+                <ComboBox Margin="5" x:Name="brandBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" SelectionChanged="ComboBox_SelectionChanged" ItemsSource="{Binding Source={x:Static properties:Settings.Default}, Path=Brand}" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Leto prve registracije"/>
+                <TextBox Margin="5" x:Name="yearInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Prevoženi km"/>
+                <TextBox Margin="5" x:Name="distanceInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Tip goriva"/>
+                <ComboBox Margin="5" x:Name="fuelBox" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Cena"/>
+                <TextBox Margin="5" x:Name="priceInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Dodaten opis"/>
+                <TextBox Margin="5" x:Name="detailsInput" HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+            </StackPanel>
             <Button x:Name="addButton" Content="Dodaj" HorizontalAlignment="Left" VerticalAlignment="Top" Click="addButton_Click"/>
+            <Button x:Name="editButton" Content="Uredi" HorizontalAlignment="Left" VerticalAlignment="Top" Click="editButton_Click"/>
         </StackPanel>
     </Grid>
 </Window>
