@@ -58,6 +58,9 @@
     <Compile Include="Adds.xaml.cs">
       <DependentUpon>Adds.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Filter.xaml.cs">
+      <DependentUpon>Filter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="IsNullConverter.cs" />
     <Compile Include="ObservableList.cs" />
     <Compile Include="Settings.cs" />
@@ -65,6 +68,10 @@
       <DependentUpon>Settings.xaml</DependentUpon>
     </Compile>
     <Page Include="Adds.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Filter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

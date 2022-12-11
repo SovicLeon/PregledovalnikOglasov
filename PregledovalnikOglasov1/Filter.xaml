@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="PregledovalnikOglasov1.Filter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PregledovalnikOglasov1"             
+             xmlns:properties="clr-namespace:PregledovalnikOglasov1.Properties"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical" Margin="0,0,10,0">
+                <Label Content="Iskanje oglasov" HorizontalAlignment="Center" Margin="0,10,0,5" FontSize="30"/>
+                <TextBox x:Name="searchInput" Text="Išči" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25" TextChanged="TextBox_TextChanged"/>
+                <ComboBox x:Name="brandBox" Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Znamka" Width="310" ItemsSource="{Binding Source={x:Static properties:Settings.Default}, Path=Brand}" SelectionChanged="brandBox_SelectionChanged" />
+                <!--<ComboBox Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Prevoženi km do" Width="310">
+                    <ComboBoxItem Content="50000km"></ComboBoxItem>
+                    <ComboBoxItem Content="100000km"></ComboBoxItem>
+                    <ComboBoxItem Content="150000km"></ComboBoxItem>
+                    <ComboBoxItem Content="200000km"></ComboBoxItem>
+                    <ComboBoxItem Content="250000km"></ComboBoxItem>
+                </ComboBox>
+                <TextBox Text="Letnik od" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
+                <TextBox Text="Letnik do" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
+                <TextBox Text="Cena do" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>-->
+                <ComboBox x:Name="fuelBox" Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Gorivo" Width="310" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

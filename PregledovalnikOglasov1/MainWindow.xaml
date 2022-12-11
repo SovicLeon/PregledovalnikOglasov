@@ -69,34 +69,7 @@
                     </MenuItem>
                 </MenuItem>
             </Menu>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical" Margin="0,0,10,0">
-                    <Label Content="Iskanje oglasov" HorizontalAlignment="Center" Margin="0,10,0,5" FontSize="30"/>
-                    <TextBox Text="Išči" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
-                    <ComboBox Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Znamka" Width="310">
-                        <ComboBoxItem Content="Audi"></ComboBoxItem>
-                        <ComboBoxItem Content="BMW"></ComboBoxItem>
-                        <ComboBoxItem Content="Citroen"></ComboBoxItem>
-                    </ComboBox>
-                    <ComboBox Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Prevoženi km do" Width="310">
-                        <ComboBoxItem Content="50000km"></ComboBoxItem>
-                        <ComboBoxItem Content="100000km"></ComboBoxItem>
-                        <ComboBoxItem Content="150000km"></ComboBoxItem>
-                        <ComboBoxItem Content="200000km"></ComboBoxItem>
-                        <ComboBoxItem Content="250000km"></ComboBoxItem>
-                    </ComboBox>
-                    <TextBox Text="Letnik od" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
-                    <TextBox Text="Letnik do" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
-                    <TextBox Text="Cena do" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
-                    <ComboBox Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Gorivo" Width="310">
-                        <ComboBoxItem Content="bencin"></ComboBoxItem>
-                        <ComboBoxItem Content="diesel"></ComboBoxItem>
-                        <ComboBoxItem Content="hibridni pogon"></ComboBoxItem>
-                        <ComboBoxItem Content="e-pogon pogon"></ComboBoxItem>
-                    </ComboBox>
-                </StackPanel>
-            </StackPanel>
+            <local:Filter />
         </StackPanel>
         <ScrollViewer Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch">
             <ListView HorizontalContentAlignment="Stretch" Name="listView" MouseDoubleClick="ListViewItem_MouseDoubleClick">

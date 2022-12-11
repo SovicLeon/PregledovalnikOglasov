@@ -43,6 +43,23 @@ namespace PregledovalnikOglasov1
                 ImageSrc = "/Citroen.jpg"
             });*/
             listView.ItemsSource = carItems;
+            Filter filterControl = new Filter();
+            filterControl.OnFilterChanged += MyFilterChangedHandler;
+        }
+
+        void MyFilterChangedHandler(object sender, String filter)
+        {
+            // Use the filter parameter to filter the collection of data
+            ICollectionView view = CollectionViewSource.GetDefaultView(carItems);
+            view.Filter = (item) =>
+            {
+                CarItem data = item as CarItem;
+                if (data.Brand == filter)
+                {
+                    return true;
+                }
+                return false;
+            };
         }
 
         private void Izhod(object sender, RoutedEventArgs e)
