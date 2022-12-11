@@ -92,17 +92,13 @@ namespace PregledovalnikOglasov1
 
         private void editButton_Click(object sender, RoutedEventArgs e)
         {
-            CarItem carItem = new CarItem
-            {
-                Brand = brandBox.SelectedItem.ToString(),
-                Year = int.Parse(yearInput.Text),
-                Distance = int.Parse(distanceInput.Text),
-                Fuel = (FuelTypes)fuelBox.SelectedItem,
-                Price = int.Parse(priceInput.Text),
-                Details = detailsInput.Text,
-                ImageSrc = carImage.Source.ToString()
-            };
-            mainWindow.carItems[editIndex] = carItem;
+            mainWindow.carItems[editIndex].Brand = brandBox.SelectedItem.ToString();
+            mainWindow.carItems[editIndex].Year = int.Parse(yearInput.Text);
+            mainWindow.carItems[editIndex].Distance = int.Parse(distanceInput.Text);
+            mainWindow.carItems[editIndex].Fuel = (FuelTypes)fuelBox.SelectedItem;
+            mainWindow.carItems[editIndex].Price = int.Parse(priceInput.Text);
+            mainWindow.carItems[editIndex].Details = detailsInput.Text;
+            mainWindow.carItems[editIndex].ImageSrc = carImage.Source.ToString();
             this.Close();
         }
     }

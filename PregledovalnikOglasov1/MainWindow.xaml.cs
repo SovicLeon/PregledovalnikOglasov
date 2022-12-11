@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace PregledovalnikOglasov1
 {
@@ -91,6 +94,46 @@ namespace PregledovalnikOglasov1
                 Adds adds = new Adds();
                 adds.ShowDialog();
                 selectedIndex = -1;
+            }
+        }
+
+        private void Uvozi(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "XML Files (*.xml)|*.xml";
+
+            // show the OpenFileDialog and get the result
+            var result = openFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                using (StreamReader sr = new StreamReader(openFileDialog.FileName))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(List<CarItem>));
+                    var lst = (List<CarItem>)xml.Deserialize(sr);
+                    if (lst != null)
+                    {
+                        carItems = new ObservableCollection<CarItem>(lst);
+                        listView.ItemsSource = carItems;
+                    }
+                }
+            }
+        }
+
+        private void Izvozi(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "XML Files (*.xml)|*.xml";
+
+            var result = saveFileDialog.ShowDialog();
+
+            if (result == true)
+            {
+                using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(List<CarItem>));
+                    xml.Serialize(sw, carItems.ToList());
+                }
             }
         }
     }

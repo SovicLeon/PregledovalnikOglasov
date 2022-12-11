@@ -33,6 +33,16 @@
                             <Image Source="/4781838_cancel_close_delete_exit_logout_icon.png"/>
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem Header="Uvozi" Click="Uvozi">
+                        <MenuItem.Icon>
+                            <Image Source="/4781838_cancel_close_delete_exit_logout_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Izvozi" Click="Izvozi">
+                        <MenuItem.Icon>
+                            <Image Source="/4781838_cancel_close_delete_exit_logout_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="Oglasi">
                     <MenuItem Header="Dodaj" Click="Dodaj">
