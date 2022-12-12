@@ -39,7 +39,11 @@ namespace PregledovalnikOglasov1
                 setFilter();
             } else if (mainWindow.listView != null)
             {
-                mainWindow.listView.ItemsSource = mainWindow.carItems;
+                searchSet = false;
+                if (!fuelSet && !searchSet)
+                {
+                    mainWindow.listView.ItemsSource = mainWindow.carItems;
+                }                
             }
         }
 
@@ -52,7 +56,11 @@ namespace PregledovalnikOglasov1
             }
             else if (mainWindow.listView != null)
             {
-                mainWindow.listView.ItemsSource = mainWindow.carItems;
+                fuelSet = false;
+                if (!fuelSet && !searchSet)
+                {
+                    mainWindow.listView.ItemsSource = mainWindow.carItems;
+                }
             }
         }
 
