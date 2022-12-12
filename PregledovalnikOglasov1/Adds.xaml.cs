@@ -45,9 +45,11 @@ namespace PregledovalnikOglasov1
                 carImage.Source = new BitmapImage(new Uri(mainWindow.carItems[mainWindow.selectedIndex].ImageSrc));
                 addButton.Visibility = Visibility.Collapsed;
                 editIndex = mainWindow.selectedIndex;
+                this.Title = "Urejanje oglasa";
             } else
             {
                 editButton.Visibility = Visibility.Collapsed;
+                this.Title = "Dodajanje oglasa";
             }
             
         }
@@ -59,15 +61,42 @@ namespace PregledovalnikOglasov1
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            int year = 0;
+            if (int.TryParse(yearInput.Text, out year))
+            {
+                year = int.Parse(yearInput.Text);
+            }
+            else
+            {
+                year = 0;
+            }
+            int distance = 0;
+            if (int.TryParse(distanceInput.Text, out distance))
+            {
+                distance = int.Parse(distanceInput.Text);
+            }
+            else
+            {
+                distance = 0;
+            }
+            int price = 0;
+            if (int.TryParse(priceInput.Text, out price))
+            {
+                price = int.Parse(priceInput.Text);
+            }
+            else
+            {
+                price = 0;
+            }
             CarItem carItem = new CarItem
             {
-                Brand = brandBox.SelectedItem.ToString(),
-                Year = int.Parse(yearInput.Text),
-                Distance = int.Parse(distanceInput.Text),
-                Fuel = (FuelTypes)fuelBox.SelectedItem,
-                Price = int.Parse(priceInput.Text),
-                Details = detailsInput.Text,
-                ImageSrc = carImage.Source == null ? "" : carImage.Source.ToString()
+                Brand = brandBox.SelectedItem == null ? "Znamka" : brandBox.SelectedItem.ToString(),
+                Year = year,
+                Distance = distance,
+                Fuel = fuelBox.SelectedItem == null ? FuelTypes.Dizel : (FuelTypes)fuelBox.SelectedItem,
+                Price = price,
+                Details = detailsInput.Text == null ? "Opis" : detailsInput.Text,
+                ImageSrc = carImage.Source == null ? "abc" : carImage.Source.ToString()
             };
             mainWindow.carItems.Add(carItem);
             //newCarItemAdded?.Invoke(this, mainWindow.carItems.Last());

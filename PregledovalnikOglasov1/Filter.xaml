@@ -13,18 +13,8 @@
             <StackPanel HorizontalAlignment="Stretch" Orientation="Vertical" Margin="0,0,10,0">
                 <Label Content="Iskanje oglasov" HorizontalAlignment="Center" Margin="0,10,0,5" FontSize="30"/>
                 <TextBox x:Name="searchInput" Text="Išči" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25" TextChanged="TextBox_TextChanged"/>
-                <ComboBox x:Name="brandBox" Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Znamka" Width="310" ItemsSource="{Binding Source={x:Static properties:Settings.Default}, Path=Brand}" SelectionChanged="brandBox_SelectionChanged" />
-                <!--<ComboBox Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Prevoženi km do" Width="310">
-                    <ComboBoxItem Content="50000km"></ComboBoxItem>
-                    <ComboBoxItem Content="100000km"></ComboBoxItem>
-                    <ComboBoxItem Content="150000km"></ComboBoxItem>
-                    <ComboBoxItem Content="200000km"></ComboBoxItem>
-                    <ComboBoxItem Content="250000km"></ComboBoxItem>
-                </ComboBox>
-                <TextBox Text="Letnik od" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
-                <TextBox Text="Letnik do" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>
-                <TextBox Text="Cena do" Width="310" Background="#FFF7F7F7" Margin="0,0,0,10" Height="25"/>-->
-                <ComboBox x:Name="fuelBox" Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Gorivo" Width="310" />
+                <ComboBox x:Name="fuelBox" Margin="0,0,0,10" IsEditable="True" IsReadOnly="True" Text="Gorivo" Width="310" SelectionChanged="fuelBox_SelectionChanged" />
+                <Button x:Name="resetButton" Margin="0,0,0,10" Content="Ponastavi" Click="resetButton_Click" />
             </StackPanel>
         </StackPanel>
     </Grid>

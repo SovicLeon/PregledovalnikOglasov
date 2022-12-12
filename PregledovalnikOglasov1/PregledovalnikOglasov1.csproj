@@ -62,7 +62,6 @@
       <DependentUpon>Filter.xaml</DependentUpon>
     </Compile>
     <Compile Include="IsNullConverter.cs" />
-    <Compile Include="ObservableList.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Settings.xaml.cs">
       <DependentUpon>Settings.xaml</DependentUpon>
@@ -142,6 +141,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Citroen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icons8-downloading-updates-24.png" />
+    <Resource Include="icons8-upload-24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

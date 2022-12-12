@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,27 +21,67 @@ namespace PregledovalnikOglasov1
     /// </summary>
     public partial class Filter : UserControl
     {
+
+        MainWindow mainWindow = (MainWindow)Application.Current.MainWindow;
+        bool fuelSet = false;
+        bool searchSet = false;
         public Filter()
         {
             InitializeComponent();
             fuelBox.ItemsSource = Enum.GetValues(typeof(FuelTypes));
         }
 
-        public delegate void FilterChanged(object sender, String filter);
-        public event FilterChanged OnFilterChanged;
-
-        private void brandBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (sender == brandBox && brandBox.SelectedItem is String s)
+            if (searchInput.Text != "" && mainWindow.listView != null)
             {
-                String filter = s;
-                OnFilterChanged?.Invoke(this, filter);
+                searchSet = true;
+                setFilter();
+            } else if (mainWindow.listView != null)
+            {
+                mainWindow.listView.ItemsSource = mainWindow.carItems;
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void fuelBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (fuelBox.SelectedItem != null && mainWindow.listView != null)
+            {
+                fuelSet = true;
+                setFilter();
+            }
+            else if (mainWindow.listView != null)
+            {
+                mainWindow.listView.ItemsSource = mainWindow.carItems;
+            }
+        }
 
+        private void resetButton_Click(object sender, RoutedEventArgs e)
+        {
+            searchInput.Text = "";
+            fuelBox.Text = "";
+            fuelSet = false;
+            searchSet = false;
+        }
+
+        private void setFilter()
+        {
+            if (!fuelSet)
+            {
+                ObservableCollection<CarItem> filteredCollection = new ObservableCollection<CarItem>(mainWindow.carItems.Where(x => x.ToString().ToUpper().Contains(searchInput.Text.ToUpper())));
+                mainWindow.listView.ItemsSource = filteredCollection;
+                mainWindow.listView.Items.Refresh();
+            } else if (!searchSet)
+            {
+                ObservableCollection<CarItem> filteredCollection = new ObservableCollection<CarItem>(mainWindow.carItems.Where(x => x.Fuel.Equals(fuelBox.SelectedItem)));
+                mainWindow.listView.ItemsSource = filteredCollection;
+                mainWindow.listView.Items.Refresh();
+            } else
+            {
+                ObservableCollection<CarItem> filteredCollection = new ObservableCollection<CarItem>(mainWindow.carItems.Where(x => x.ToString().ToUpper().Contains(searchInput.Text.ToUpper()) && x.Fuel.Equals(fuelBox.SelectedItem)));
+                mainWindow.listView.ItemsSource = filteredCollection;
+                mainWindow.listView.Items.Refresh();
+            }
         }
     }
 }

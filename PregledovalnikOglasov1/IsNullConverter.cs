@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,13 @@ namespace PregledovalnikOglasov1
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return string.IsNullOrEmpty(value?.ToString());
+            Debug.WriteLine(value);
+            if ((String)value != "")
+            {
+                return true;
+            }
+            Debug.WriteLine(value);
+            return false;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -44,7 +44,7 @@ namespace PregledovalnikOglasov1
             });*/
             listView.ItemsSource = carItems;
             Filter filterControl = new Filter();
-            filterControl.OnFilterChanged += MyFilterChangedHandler;
+            //filterControl.OnFilterChanged += MyFilterChangedHandler;
         }
 
         void MyFilterChangedHandler(object sender, String filter)
@@ -60,6 +60,7 @@ namespace PregledovalnikOglasov1
                 }
                 return false;
             };
+            listView.ItemsSource = carItems;
         }
 
         private void Izhod(object sender, RoutedEventArgs e)
